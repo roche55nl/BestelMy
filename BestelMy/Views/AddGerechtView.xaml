@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BestelMy.Views.AddGerechtView" Title="{Binding PageTitle}">
+    <ContentPage.Content>
+        <StackLayout Padding="20" BackgroundColor="Khaki">
+
+            <ListView x:Name="FoodList" ItemsSource="{Binding GerechtList}" SelectedItem="{Binding SelectedMyList}"
+                   HasUnevenRows="true" ItemTapped="OnItemSelected"
+                   SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <Grid BackgroundColor="Black" HeightRequest="2"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid Padding="10" RowSpacing="10" ColumnSpacing="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Orientation="Vertical" Padding="20"></StackLayout>
+                                        <Image
+                                
+                                        HeightRequest="60"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand"
+                                        Aspect="AspectFill"
+                                       WidthRequest="66"
+                                       Grid.RowSpan="3"
+                                       Source="{Binding Image}"/>
+                                        <Label x:Name="Naam" Grid.Column="1"
+                                       Text="{Binding Naam}"
+                                       VerticalOptions="StartAndExpand" />
+                                        <Label x:Name="Detail" Grid.Column="1"
+                                       Grid.Row="1"
+                                       VerticalOptions="End"
+                                       Text="{Binding Description}"/>
+                                        <Label x:Name="MyPrijs" Grid.Column="2"
+                                       Grid.Row="1"
+                                       VerticalOptions="End"
+                                       Text="{Binding Prijs, StringFormat='{0:F2} €'}"/>
+                                        <Label Grid.Column="2"
+                                       Grid.Row="1"
+                                        VerticalOptions="End"
+                                        />
+
+                                        <Stepper  x:Name="stepperCounter" Grid.Column="2" Grid.ColumnSpan="2"
+                                       Maximum="100" Minimum="1" Increment="{Binding Prijs,Mode=TwoWay}" Value="{Binding Prijs,Mode=TwoWay}" VerticalOptions="Fill" HorizontalOptions="Fill" ValueChanged="StepperCounter_ValueChanged" WidthRequest="20"
+        HeightRequest="10"></Stepper>
+                                    </Grid>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label x:Name="txtItemsCount" Text="{Binding Prijs,Mode=TwoWay}" TextColor="DarkBlue" BackgroundColor="Azure"/>
+            <Button BackgroundColor="#CE8585" Text="Voeg uw gerecht toe" Command="{Binding AddCommand}" TextColor="Blue"
+        BorderColor="Peru"
+        BorderWidth="100"
+        CornerRadius="80"
+        WidthRequest="30"
+        HeightRequest="40"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

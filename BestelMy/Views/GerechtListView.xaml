@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BestelMy.Views.GerechtListView" Title="{Binding PageTitle}" BackgroundColor="MediumAquamarine">
+    <ContentPage.Content>
+        <StackLayout>
+            <AbsoluteLayout VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                <Image AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            Source="menu.jpg" Aspect="AspectFill"/>
+                <ListView ItemsSource="{Binding GerechtList}" HasUnevenRows="True" SelectedItem="{Binding SelectedGerecht}" Footer="{Binding}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10" RowSpacing="5" ColumnSpacing="30">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="40"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0"
+                                             Grid.Row="1"
+                                       Text="{Binding Naam}"
+                                       VerticalOptions="StartAndExpand" FontSize="15" FontAttributes="Bold"/>
+                                    <Label Grid.Column="1"
+                                       Grid.Row="1"
+                                       VerticalOptions="End" TextColor="Tomato"
+                                       Text="{Binding Prijs,StringFormat='{0:F2} €'}" FontAttributes="Bold"/>
+                                    <Label x:Name="DePrijs" Grid.Column="2"
+                                       Grid.Row="1"
+                                       VerticalOptions="Start"
+                                       Text="Euro" FontAttributes="Bold"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.FooterTemplate>
+                        <DataTemplate>
+                            <ContentView BackgroundColor="Azure">
+                                <Label Margin="10" Text="{Binding ItemsTotaal, StringFormat='Totaal in Euro:                              {0:f2} €'}" TextColor="Blue" HorizontalTextAlignment="End" FontSize="Medium"/>
+                            </ContentView>
+                        </DataTemplate>
+                    </ListView.FooterTemplate>
+                </ListView>
+            </AbsoluteLayout>
+            <Button BackgroundColor="White" Text="Totaal berekenen" Command="{Binding Bereken}" IsEnabled="{Binding BerekenIsEnabled}" BorderWidth="70" TextColor="Wheat"
+        BorderColor="Black"
+        CornerRadius="50"
+        WidthRequest="200"
+        HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Button BackgroundColor="#CE85EF" Text="Verwijderen" Command="{Binding DeleteCommand}" TextColor="Blue"
+        BorderColor="Red"
+        BorderWidth="100"
+        CornerRadius="70"
+        WidthRequest="200"
+        HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Button BackgroundColor="#CE8585" Text="Bestellen" Command="{Binding AddCommand}" TextColor="Blue"
+        BorderColor="CadetBlue"
+        BorderWidth="100"
+        CornerRadius="70"
+        WidthRequest="200"
+        HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Button Text="Het weer vandaag" Command="{Binding GoTo}" TextColor="Blue"
+        BorderColor="Peru"
+        BorderWidth="100"
+        CornerRadius="70"
+        WidthRequest="200"
+        HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    

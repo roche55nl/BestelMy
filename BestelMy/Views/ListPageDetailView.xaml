@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BestelMy.Views.ListPageDetailView" Title="{Binding PageTitle}" >
+    <AbsoluteLayout VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+
+        <Image AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            Source="https://www.fonewalls.com/wp-content/uploads/1080x2040-Background-HD-Wallpaper-028.jpg" Aspect="AspectFill"/>
+
+        <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+            <StackLayout>
+                <Label Text="Meer details" FontSize="20" FontAttributes="Bold" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Image x:Name="MyImage" Source="{Binding Image}" HeightRequest="300" WidthRequest="300"/>
+                <Label x:Name="MyTitle" Text="{Binding Naam}" HorizontalTextAlignment="Center" FontSize="Body" TextColor="Black"/>
+                <Label x:Name="MyDesc" Text="{Binding Description}" HorizontalTextAlignment="Center"/>
+                <Label x:Name="MyPrijs" Text="{Binding Prijs}" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+        </ScrollView>
+
+    </AbsoluteLayout>
+</ContentPage>
